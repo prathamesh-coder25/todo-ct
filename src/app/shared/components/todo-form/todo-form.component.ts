@@ -18,6 +18,14 @@ export class TodoFormComponent implements OnInit {
   }
   
 onTodoAdd(){
+
+  let todoValue = this.todoItem.nativeElement.value.trim()
+
+  if(!todoValue){
+    return
+  }
+
+  
   let todo : Itodos ={
     todoItem: this.todoItem.nativeElement.value,
      isCompleted: this.isCompleted.nativeElement.value =='true'? true:false,
