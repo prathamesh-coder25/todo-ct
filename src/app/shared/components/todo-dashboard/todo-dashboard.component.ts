@@ -34,11 +34,9 @@ export class TodoDashboardComponent implements OnInit {
 
 
 
-getRemoveId(todo:Itodos){
-
-  let getIndex=this.todosArr.findIndex(n => n.todoId === todo.todoId)
+getRemoveId(id:string){
+  let getIndex=this.todosArr.findIndex(n => n.todoId===id)
   this.todosArr.splice(getIndex,1)
-  console.log(todo);
   
 }
 

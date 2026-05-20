@@ -9,13 +9,15 @@ import { TodoListComponent } from './shared/components/todo-list/todo-list.compo
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
 import { MaterialModule } from './shared/material/material.module';
+import { GetConfirmationComponent } from './shared/components/get-confirmation/get-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoDashboardComponent,
     TodoFormComponent,
-    TodoListComponent
+    TodoListComponent,
+    GetConfirmationComponent
   ],
   imports: [
     BrowserModule,

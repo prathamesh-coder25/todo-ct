@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Itodos } from '../../models/todo';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { GetConfirmationComponent } from '../get-confirmation/get-confirmation.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,25 +12,23 @@ export class TodoListComponent implements OnInit {
 
   @Input() getTodos !: Array<Itodos>
 
-  @Output() emitRemoveId:EventEmitter<Itodos>= new EventEmitter<Itodos>()
-  constructor() { }
+  @Output() emitRemoveId:EventEmitter<string>= new EventEmitter<string>()
+  constructor(private _matDialog:MatDialog) { }
 
   ngOnInit(): void {
   }
-  onRemove(id:Itodos){
-console.log(id);
-
-// this.emitRemoveId.emit(id)
-   let getPassword=prompt("password")
-
-    if(getPassword === '12345'){
-          this.emitRemoveId.emit(id)
-
-
-    }else{
-      alert(' Enter your Invailid password  plz try again')
-    }
-
+  
+  onRemove(id:string){
+    let config=new MatDialogConfig();
+    config.width='400px';
+    config.disableClose=true;
+    config.data=`are You sure U want to remove it with id ${id}`
+    let getconfirm=  this._matDialog.open(GetConfirmationComponent,config);
+    getconfirm.afterClosed().subscribe(confirm=>{
+      if(confirm){
+        this.emitRemoveId.emit(id)
+      }
+    })
 
   }
 
