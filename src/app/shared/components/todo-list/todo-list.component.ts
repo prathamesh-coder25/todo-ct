@@ -10,7 +10,9 @@ export class TodoListComponent implements OnInit {
 
   @Input() getTodos !: Array<Itodos>
 
-  @Output() emitRemoveId:EventEmitter<Itodos>= new EventEmitter<Itodos>()
+  @Output() emitRemoveId:EventEmitter<Itodos>= new EventEmitter<Itodos>();
+
+  @Output() emitEdit:EventEmitter<Itodos>=new EventEmitter<Itodos>();
   constructor() { }
 
   ngOnInit(): void {
@@ -22,14 +24,14 @@ console.log(id);
    let getPassword=prompt("password")
 
     if(getPassword === '12345'){
-          this.emitRemoveId.emit(id)
-
-
+          this.emitRemoveId.emit(id);
     }else{
-      alert(' Enter your Invailid password  plz try again')
+      alert(' you have enterred Invailid password , plz try again later');
     }
+  }
 
-
+  onEdit(todo:Itodos){
+    this.emitEdit.emit(todo)
   }
 
 }

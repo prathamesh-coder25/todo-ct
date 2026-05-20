@@ -8,7 +8,7 @@ import { snackBarService } from '../../services/mat.service';
   styleUrls: ['./todo-dashboard.component.scss']
 })
 export class TodoDashboardComponent implements OnInit {
-
+Editobj!:Itodos
   todosArr = [
     {
       todoItem: 'Azure',
@@ -29,9 +29,12 @@ export class TodoDashboardComponent implements OnInit {
  
 
 
-  constructor(private _snackBar : snackBarService) { }
+  constructor(private _snackBar : snackBarService) { 
+
+  }
 
   ngOnInit(): void {
+
   }
 
 getNewTodo(todo : Itodos){
@@ -49,4 +52,15 @@ getRemoveId(todo:Itodos){
   
 }
 
+
+onEdit(todo:Itodos){
+  this.Editobj=todo;
+}
+
+
+onUpdate(todo:Itodos){
+  let getIndex=this.todosArr.findIndex(t=>t.todoId===todo.todoId);
+  this.todosArr[getIndex]=todo;
+  this._snackBar.openSnackBar(`the TodoItem is Updated Succesfully`);
+}
 }
