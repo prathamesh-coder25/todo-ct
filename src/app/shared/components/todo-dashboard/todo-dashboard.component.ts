@@ -39,4 +39,14 @@ this.todosArr.push(todo)
  this._snackBar.openSnackBar(`The new Todo ${todo.todoItem} Added Successfully !!!!`)
 
 }
+
+
+getRemoveId(todo:Itodos){
+
+  let getIndex=this.todosArr.findIndex(n => n.todoId === todo.todoId)
+  this.todosArr.splice(getIndex,1)
+  console.log(todo);
+  
+}
+
 }
