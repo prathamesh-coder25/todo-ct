@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Itodos } from '../../models/todo';
 
 @Component({
   selector: 'app-todo-dashboard',
@@ -30,5 +31,15 @@ export class TodoDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
+getRemoveId(todo:Itodos){
+
+  let getIndex=this.todosArr.findIndex(n => n.todoId === todo.todoId)
+  this.todosArr.splice(getIndex,1)
+  console.log(todo);
+  
+}
 
 }
